@@ -1,0 +1,491 @@
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Tab Navigation Styles */
+.tab-nav {
+    display: flex;
+    background-color: #f1f3f4;
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 15px 20px;
+    border: none;
+    background-color: transparent;
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-button:hover {
+    background-color: #e8eaed;
+    color: #333;
+}
+
+.tab-button.active {
+    background-color: white;
+    color: #0078d4;
+    border-bottom-color: #0078d4;
+}
+
+/* Tab Content Styles */
+.tab-content {
+    display: none;
+    padding: 30px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    margin-top: 0;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #555;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus {
+    outline: none;
+    border-color: #0078d4;
+    box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.2);
+}
+
+.insert-btn {
+    width: 100%;
+    background-color: #dc3545;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.insert-btn:hover {
+    background-color: #c82333;
+}
+
+.insert-btn:active {
+    background-color: #bd2130;
+}
+
+.insert-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.message {
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Table Generator Styles */
+.table-config {
+    margin-bottom: 30px;
+}
+
+/* Formatting Settings Styles */
+.formatting-settings {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border: 1px solid #e9ecef;
+}
+
+.formatting-settings h4 {
+    margin: 0 0 15px 0;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.format-group {
+    margin-bottom: 12px;
+}
+
+.format-group:last-child {
+    margin-bottom: 0;
+}
+
+.format-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 13px;
+    color: #555;
+}
+
+.format-control-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.format-control-container input[type="color"] {
+    width: 50px;
+    height: 30px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.format-control-container select {
+    flex: 1;
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.format-control-container select:focus {
+    outline: none;
+    border-color: #0078d4;
+    box-shadow: 0 0 0 1px rgba(0, 120, 212, 0.2);
+}
+
+.reset-btn-small,
+.save-btn-small {
+    padding: 4px 8px;
+    border: 1px solid #ddd;
+    background-color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.2s ease;
+}
+
+.reset-btn-small:hover {
+    background-color: #dc3545;
+    color: white;
+    border-color: #dc3545;
+}
+
+.save-btn-small:hover {
+    background-color: #28a745;
+    color: white;
+    border-color: #28a745;
+}
+
+.format-status {
+    font-size: 11px;
+    color: #666;
+    font-style: italic;
+}
+
+.format-status.saved {
+    color: #28a745;
+}
+
+.format-status.default {
+    color: #6c757d;
+}
+
+/* Alignment button styles */
+.alignment-buttons {
+    display: flex;
+    gap: 2px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 2px;
+}
+
+.alignment-btn {
+    padding: 6px 8px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+}
+
+.alignment-btn:hover {
+    background-color: #e9ecef;
+    color: #333;
+}
+
+.alignment-btn.active {
+    background-color: #d6d6d6;
+    color: #333;
+}
+
+.alignment-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.preview-btn, .reset-btn {
+    background-color: #0078d4;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+.preview-btn:hover {
+    background-color: #106ebe;
+}
+
+.reset-btn {
+    background-color: #6c757d;
+}
+
+.reset-btn:hover {
+    background-color: #5a6268;
+}
+
+.table-preview {
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.table-preview h3 {
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 16px;
+}
+
+.editable-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 12px;
+}
+
+.editable-table th,
+.editable-table td {
+    border: 1px solid #ddd;
+    padding: 12px 8px;
+    text-align: left;
+    min-width: 120px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.editable-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+.editable-table input {
+    width: 100%;
+    border: none;
+    padding: 4px;
+    font-size: 12px;
+    background: transparent !important;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.editable-table input::selection {
+    background-color: rgba(0, 120, 212, 0.3) !important;
+}
+
+.editable-table input:focus {
+    outline: 1px solid #0078d4;
+    background-color: transparent !important;
+}
+
+/* Style for preview of formatted text */
+.format-preview {
+    padding: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    min-height: 20px;
+    display: none;
+    background-color: transparent !important;
+    border: 1px dashed #ccc;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.format-preview:hover {
+    border-color: #0078d4;
+}
+
+.format-preview::selection {
+    background-color: rgba(0, 120, 212, 0.3) !important;
+}
+
+.format-preview sub,
+.format-preview sup,
+.editable-table sub,
+.editable-table sup {
+    font-size: 0.75em;
+    vertical-align: baseline;
+    position: relative;
+}
+
+.format-preview sub,
+.editable-table sub {
+    bottom: -0.25em;
+}
+
+.format-preview sup,
+.editable-table sup {
+    top: -0.5em;
+}
+
+/* Make table cells relative positioned for preview */
+.editable-table td,
+.editable-table th {
+    position: relative;
+}
+
+.table-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #555;
+}
+
+label input[type="checkbox"] {
+    margin-right: 8px;
+    width: auto;
+}
+
+/* Formatting Toolbar */
+.formatting-toolbar {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.toolbar-hint {
+    font-size: 12px;
+    color: #666;
+}
+
+.toolbar-info {
+    font-size: 11px;
+    color: #999;
+    margin-left: auto;
+}
+
+.format-btn {
+    padding: 4px 10px;
+    border: 1px solid #ddd;
+    background-color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.format-btn:hover {
+    background-color: #0078d4;
+    color: white;
+    border-color: #0078d4;
+}
+
+.format-btn:active {
+    transform: scale(0.95);
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 20px;
+    }
+    
+    .formatting-toolbar {
+        font-size: 11px;
+    }
+    
+    .toolbar-info {
+        display: none;
+    }
+}

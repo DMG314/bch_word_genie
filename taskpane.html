@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BCH Word Genie</title>
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="taskpane.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Tab Navigation -->
+        <div class="tab-nav">
+            <button class="tab-button active" data-tab="titlePage">Title Page Generator</button>
+            <button class="tab-button" data-tab="tableGenerator">Générateur de tableaux</button>
+            <button class="tab-button" data-tab="aiAnalysis">Analyse IA de documents</button>
+        </div>
+        
+        <!-- Title Page Generator Tab -->
+        <div id="titlePage" class="tab-content active">
+            <h2>Title Page Generator</h2>
+            <form id="titlePageForm">
+            <div class="form-group">
+                <label for="title">Code du cours:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="labName">Section:</label>
+                <input type="text" id="labName" name="labName" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="professorName"># et nom du laboratoire:</label>
+                <input type="text" id="professorName" name="professorName" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="date">Nom de l'assistant:</label>
+                <input type="text" id="date" name="date" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="actualDate">Date:</label>
+                <input type="date" id="actualDate" name="actualDate" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="workSpace">Espace de travail:</label>
+                <input type="text" id="workSpace" name="workSpace" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="studentInfo">Nom et no. etudiant:</label>
+                <input type="text" id="studentInfo" name="studentInfo" required>
+            </div>
+            
+            <button type="submit" id="insertButton" class="insert-btn">Insert</button>
+            </form>
+        </div>
+        
+        <!-- Table Generator Tab -->
+        <div id="tableGenerator" class="tab-content">
+            <h2>Générateur de tableaux</h2>
+            
+            <div class="table-config">
+                <div class="form-group">
+                    <label for="tableRows">Nombre de lignes:</label>
+                    <input type="number" id="tableRows" min="1" max="20" value="3" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tableCols">Nombre de colonnes:</label>
+                    <input type="number" id="tableCols" min="1" max="10" value="3" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="includeHeaders" checked>
+                        Inclure une ligne d'en-tête
+                    </label>
+                </div>
+                
+                <div class="formatting-settings">
+                    <h4>Formatage du tableau</h4>
+                    
+                    <div class="format-group">
+                        <label for="textColor">Couleur du texte:</label>
+                        <div class="format-control-container">
+                            <input type="color" id="textColor" value="#000000">
+                            <button type="button" id="resetTextColor" class="reset-btn-small" title="Réinitialiser">↺</button>
+                            <button type="button" id="saveTextColor" class="save-btn-small" title="Sauvegarder comme défaut">💾</button>
+                        </div>
+                        <span class="format-status" id="textColorStatus"></span>
+                    </div>
+                    
+                    <div class="format-group">
+                        <label for="cellBgColor">Couleur de fond des cellules:</label>
+                        <div class="format-control-container">
+                            <input type="color" id="cellBgColor" value="#ffffff">
+                            <button type="button" id="resetCellBgColor" class="reset-btn-small" title="Réinitialiser">↺</button>
+                            <button type="button" id="saveCellBgColor" class="save-btn-small" title="Sauvegarder comme défaut">💾</button>
+                        </div>
+                        <span class="format-status" id="cellBgColorStatus"></span>
+                    </div>
+                    
+                    <div class="format-group">
+                        <label for="headerBgColor">Couleur de fond des en-têtes:</label>
+                        <div class="format-control-container">
+                            <input type="color" id="headerBgColor" value="#f8f9fa">
+                            <button type="button" id="resetHeaderBgColor" class="reset-btn-small" title="Réinitialiser">↺</button>
+                            <button type="button" id="saveHeaderBgColor" class="save-btn-small" title="Sauvegarder comme défaut">💾</button>
+                        </div>
+                        <span class="format-status" id="headerBgColorStatus"></span>
+                    </div>
+                    
+                    <div class="format-group">
+                        <label>Alignement horizontal:</label>
+                        <div class="format-control-container">
+                            <div class="alignment-buttons" id="textAlignment" data-alignment="left">
+                                <button type="button" class="alignment-btn" data-align="left" title="Aligner à gauche">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                        <rect x="2" y="3" width="8" height="2"/>
+                                        <rect x="2" y="7" width="12" height="2"/>
+                                        <rect x="2" y="11" width="6" height="2"/>
+                                    </svg>
+                                </button>
+                                <button type="button" class="alignment-btn" data-align="center" title="Centrer">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                        <rect x="4" y="3" width="8" height="2"/>
+                                        <rect x="2" y="7" width="12" height="2"/>
+                                        <rect x="5" y="11" width="6" height="2"/>
+                                    </svg>
+                                </button>
+                                <button type="button" class="alignment-btn" data-align="right" title="Aligner à droite">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                        <rect x="6" y="3" width="8" height="2"/>
+                                        <rect x="2" y="7" width="12" height="2"/>
+                                        <rect x="8" y="11" width="6" height="2"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <button type="button" id="saveTextAlignment" class="save-btn-small" title="Sauvegarder comme défaut">💾</button>
+                        </div>
+                        <span class="format-status" id="textAlignmentStatus"></span>
+                    </div>
+                    
+                    <div class="format-group">
+                        <label>Alignement vertical:</label>
+                        <div class="format-control-container">
+                            <div class="alignment-buttons" id="verticalAlignment" data-alignment="center">
+                                <button type="button" class="alignment-btn" data-align="top" title="Aligner en haut">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                        <rect x="2" y="2" width="12" height="2"/>
+                                        <rect x="6" y="4" width="4" height="8"/>
+                                    </svg>
+                                </button>
+                                <button type="button" class="alignment-btn" data-align="center" title="Centrer verticalement">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                        <rect x="2" y="7" width="12" height="2"/>
+                                        <rect x="6" y="3" width="4" height="10"/>
+                                    </svg>
+                                </button>
+                                <button type="button" class="alignment-btn" data-align="bottom" title="Aligner en bas">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                        <rect x="2" y="12" width="12" height="2"/>
+                                        <rect x="6" y="4" width="4" height="8"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <button type="button" id="saveVerticalAlignment" class="save-btn-small" title="Sauvegarder comme défaut">💾</button>
+                        </div>
+                        <span class="format-status" id="verticalAlignmentStatus"></span>
+                    </div>
+                </div>
+                
+                <button type="button" id="generateTablePreview" class="preview-btn">Générer l'aperçu</button>
+            </div>
+            
+            <div id="tablePreview" class="table-preview" style="display: none;">
+                <h3>Aperçu et édition:</h3>
+                <div class="formatting-toolbar">
+                    <span class="toolbar-hint">Sélectionnez du texte et cliquez:</span>
+                    <button type="button" class="format-btn" data-format="subscript" title="Indice">X₂</button>
+                    <button type="button" class="format-btn" data-format="superscript" title="Exposant">X²</button>
+                    <span class="toolbar-info">Ou utilisez: &lt;sub&gt;texte&lt;/sub&gt; et &lt;sup&gt;texte&lt;/sup&gt;</span>
+                </div>
+                <div id="editableTable"></div>
+                <div class="table-actions">
+                    <button type="button" id="insertTable" class="insert-btn">Insérer le tableau</button>
+                    <button type="button" id="resetTable" class="reset-btn">Réinitialiser</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- AI Analysis Tab -->
+        <div id="aiAnalysis" class="tab-content">
+            <h2>Analyse IA de documents</h2>
+            <p>Cette section sera développée prochainement.</p>
+        </div>
+    </div>
+    
+    <script src="taskpane.js?v=23"></script>
+</body>
+</html>

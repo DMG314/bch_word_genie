@@ -1,0 +1,22 @@
+{
+  "name": "word-title-page-addin",
+  "version": "1.0.0",
+  "description": "Microsoft Word add-in for generating formatted title pages",
+  "main": "taskpane.html",
+  "scripts": {
+    "start": "npx office-addin-dev-certs install && npx http-server -p 3000 -S -C ~/.office-addin-dev-certs/localhost.crt -K ~/.office-addin-dev-certs/localhost.key",
+    "dev": "npx http-server -p 3000 -S -C ~/.office-addin-dev-certs/localhost.crt -K ~/.office-addin-dev-certs/localhost.key",
+    "validate": "npx office-toolbox validate -m manifest.xml"
+  },
+  "keywords": [
+    "Office Add-in",
+    "Word",
+    "Title Page"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "office-addin-dev-certs": "^1.13.2",
+    "http-server": "^14.1.1"
+  }
+}
